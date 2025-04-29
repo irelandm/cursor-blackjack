@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      fill: black;
+    }
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: white;
+      }
+    }
+  </style>
+  <path d="M16 2
+    C16 2 9 11 9 15
+    C9 18.5 11.5 21 15 21
+    C12 21 11 24 11 25
+    C11 26.5 12 30 16 30
+    C20 30 21 26.5 21 25
+    C21 24 20 21 17 21
+    C20.5 21 23 18.5 23 15
+    C23 11 16 2 16 2Z"/>
+</svg> 
