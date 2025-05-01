@@ -178,4 +178,27 @@ h2 {
   .card-suit {
     font-size: 1.6em;
   }
+}
+
+.result-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.result-message.win {
+  color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.1);
+}
+
+.result-message.lose {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.result-message.push {
+  color: #f39c12;
+  background-color: rgba(243, 156, 18, 0.1);
 } 

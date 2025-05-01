@@ -74,9 +74,20 @@ export const isSoft17 = (hand: Card[]): boolean => {
   return score === 17 && hasAce
 }
 
+export type GameResult = 'player' | 'dealer' | 'push'
+
+export const determineWinner = (playerScore: number, dealerScore: number): GameResult => {
+  if (playerScore > 21) return 'dealer'
+  if (dealerScore > 21) return 'player'
+  if (playerScore > dealerScore) return 'player'
+  if (dealerScore > playerScore) return 'dealer'
+  return 'push'
+}
+
 export const dealerTurn = (gameState: GameState): GameState => {
   const newState = { ...gameState }
   const dealer = newState.players[1] // Dealer is always at index 1
+  const player = newState.players[0] // Player is always at index 0
   
   // Dealer must hit on soft 17 or less
   while (dealer.score < 17 || isSoft17(dealer.hand)) {
@@ -89,12 +100,14 @@ export const dealerTurn = (gameState: GameState): GameState => {
     // If dealer busts, game ends
     if (dealer.score > 21) {
       newState.gameStatus = 'ended'
+      newState.winner = 'player'
       return newState
     }
   }
   
-  // Dealer stands, game ends
+  // Dealer stands, determine winner
   newState.gameStatus = 'ended'
+  newState.winner = determineWinner(player.score, dealer.score)
   return newState
 }
 

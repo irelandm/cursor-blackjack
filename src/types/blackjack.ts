@@ -19,4 +19,5 @@ export interface GameState {
   currentPlayerIndex: number
   gameStatus: 'waiting' | 'playing' | 'ended'
   showDealerCards: boolean
+  winner?: 'player' | 'dealer' | 'push'
 } 

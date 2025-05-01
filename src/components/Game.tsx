@@ -23,8 +23,15 @@ const Game = () => {
   }, [])
 
   const startGame = () => {
-    const newState = dealInitialCards({ ...gameState, deck: createDeck() })
-    setGameState({ ...newState, gameStatus: 'playing', showDealerCards: false })
+    const newState = dealInitialCards({ 
+      ...gameState, 
+      deck: createDeck(),
+      currentPlayerIndex: 0,
+      gameStatus: 'playing',
+      showDealerCards: false,
+      winner: undefined
+    })
+    setGameState(newState)
   }
 
   const handleHit = () => {
@@ -81,6 +88,9 @@ const Game = () => {
       {gameState.gameStatus === 'ended' && (
         <div className="game-over">
           <h2>Game Over!</h2>
+          {gameState.winner === 'player' && <p className="result-message win">You Win! 🎉</p>}
+          {gameState.winner === 'dealer' && <p className="result-message lose">Dealer Wins! 😢</p>}
+          {gameState.winner === 'push' && <p className="result-message push">Push! 🤝</p>}
           <button onClick={startGame}>Play Again</button>
         </div>
       )}
